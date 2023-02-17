@@ -35,12 +35,13 @@ Array.from(nomImage).forEach(element => {
 
 
 // partie robot
-// fonction de génération de chiffre aléatoire de 0, 1, ou 2
 let robotImage = document.getElementById('robotImage1');
 let tabRobotImage = ['img/pierre.jpg', 'img/feuille.jpg', 'img/ciseaux.jpg']
 //initialisation de la variable selRobot (selection du robot)
 var selRobot = "";
 
+
+//fonction qui affiche le résultat sur la page html
 function afficheResultat(res) {
   console.log("résultat = " + user + ' vs ' + selRobot);
   if (res == 0) {
@@ -52,37 +53,35 @@ function afficheResultat(res) {
   }
 }
 
-function testJeu() {
 
+
+function testJeu() {
+//fonction qui permet de générer un chiffre aléatoire entre 0, 1, et 2
   function getRandomImage() {
     return Math.floor(Math.random() * 3);
   }
   
-  let robotChoice = getRandomImage();
-  let robotUrlImage = tabRobotImage[robotChoice];
+  let robotChoice = getRandomImage(); // on stocke la valeur généré par la fonction dans une variable
+  let robotUrlImage = tabRobotImage[robotChoice]; //qui permet de renseigner quel index du tableau tabRobotImage et on stocke dans une variable RobotUrlImage
   robotImage.src = robotUrlImage;
   
   
-  //console.log(getRandomImage());
 
 
   if (robotChoice == 0) {
     selRobot = "pierre"; // attribution de pierre à la variable selRobot
-    console.log('robotChoice = ' + selRobot);
-    //afficher image de la pierre
+    console.log('robotChoice = ' + selRobot); //vérification sur le console.log
   } 
   else if (robotChoice == 1) {
-    selRobot = "feuille";
-    console.log('robotChoice = ' + selRobot); // attribution de pierre à la variable feuille
-    //afficher image de la feuille
+    selRobot = "feuille"; // attribution de feuille à la variable selRobot
+    console.log('robotChoice = ' + selRobot); //vérification sur le console.log
   } else {
-    selRobot = "ciseaux"; // attribution de pierre à la variable ciseaux
-    console.log('robotChoice = ' + selRobot);
-    // afficher image du ciseaux
+    selRobot = "ciseaux"; // attribution de ciseaux à la variable selRobot
+    console.log('robotChoice = ' + selRobot); //vérification sur le console.log
   }
 
 
-  // condition de sofiane pseudo code pour les conditions de match  nul, victoire, ou échec
+  // condition de sofiane pseudo code pour les conditions de match  nul, victoire, ou échec et affichage du résultat
 
   if (user == selRobot) {
     console.log("match nul");
@@ -101,10 +100,3 @@ function testJeu() {
   }
 }
 
-
-
-
-
-//arrayComp = ["pierre","feuille","ciseaux"];
-
-//console.log(arrayComp.indexOf("pierre"));
