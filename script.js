@@ -12,7 +12,7 @@ const imgThree = document.querySelector('#ciseaux'); //sélection de l'image par
 console.log(imgThree);
 imgThree.setAttribute('src', 'img/ciseaux.jpg');
 
-let resultat = document.getElementById('resultat');
+let resultat = document.getElementById('resultat');//sélection sur le document par son ID pour afficher le résultat
 console.log('Res = ' + resultat.id);
 
 // récupérer l'attribut de l'id de l'image sélectionné par la souris
@@ -26,9 +26,9 @@ Array.from(nomImage).forEach(element => {
   element.addEventListener(
     'click',
     function (e) {
-      console.log('Joueur = ' + e.currentTarget.id)
-      user = e.currentTarget.id;
-      testJeu();
+      console.log('Joueur = ' + e.currentTarget.id) //récupération de l'id de l'élément ciblé sur laquelle je clique 
+      user = e.currentTarget.id;//stock le choix du joueur dans la variable user
+      lanceJeu();//appel la fonction à chaque clique
     }
   )
 });
@@ -53,14 +53,13 @@ function afficheResultat(res) {
   }
 }
 
-
-
-function testJeu() {
 //fonction qui permet de générer un chiffre aléatoire entre 0, 1, et 2
-  function getRandomImage() {
-    return Math.floor(Math.random() * 3);
-  }
-  
+function getRandomImage() {
+  return Math.floor(Math.random() * 3);
+}
+
+//fonction qui permet de lancer le jeu à chaque click
+function lanceJeu() {
   let robotChoice = getRandomImage(); // on stocke la valeur généré par la fonction dans une variable
   let robotUrlImage = tabRobotImage[robotChoice]; //qui permet de renseigner quel index du tableau tabRobotImage et on stocke dans une variable RobotUrlImage
   robotImage.src = robotUrlImage;
@@ -81,12 +80,11 @@ function testJeu() {
   }
 
 
-  // condition de sofiane pseudo code pour les conditions de match  nul, victoire, ou échec et affichage du résultat
+  // condition de sofiane pour les conditions de match  nul, victoire, ou échec et affichage du résultat
 
   if (user == selRobot) {
     console.log("match nul");
     afficheResultat(0);
-    console.log("résultat = " + user + ' vs ' + selRobot);
   } 
   else if (user == 'feuille' && selRobot == 'pierre' ||
     user == 'pierre' && selRobot == 'ciseaux' ||
