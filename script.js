@@ -33,6 +33,9 @@ Array.from(nomImage).forEach(element => {
   )
 });
 
+//initialisation des variables score
+let scoreJoueur = 0;
+let scoreRobot = 0;
 
 // partie robot
 let robotImage = document.getElementById('robotImage1');
@@ -44,12 +47,13 @@ var selRobot = "";
 //fonction qui affiche le résultat sur la page html
 function afficheResultat(res) {
   console.log("résultat = " + user + ' vs ' + selRobot);
+  let scoreHtml = 'Joueur : ' + scoreJoueur + ' - ' + 'Ordi : ' + scoreRobot;
   if (res == 0) {
-    resultat.innerText = 'Match Nul';
+    resultat.innerText = 'Match Nul ! ' + scoreHtml;
   } else if (res == 1) {
-    resultat.innerText = 'Vous avez gagnez !';
+    resultat.innerText = 'Vous avez gagnez ! '+ scoreHtml;
   } else {
-    resultat.innerText = 'Vous avez perdu !';
+    resultat.innerText = 'Vous avez perdu ! ' + scoreHtml;
   }
 }
 
@@ -90,9 +94,11 @@ function lanceJeu() {
     user == 'pierre' && selRobot == 'ciseaux' ||
     user == 'ciseaux' && selRobot == 'feuille') {
     console.log("win");
+    scoreJoueur++;
     afficheResultat(1);
   } else {
     console.log("lose");
+    scoreRobot++;
     afficheResultat(2);
     
   }
